@@ -25,14 +25,6 @@ public class control {
                     }
                 });
 
-                get("/", ctx ->{
-                    Authentication.User usuario = ctx.sessionAttribute("usuario");
-                    ctx.result("Zona Admin por la forma clasica --- Usuario: "+usuario.getUserIdentity());
-                } );
-
-                get("/otro-zona/otra/", ctx -> {
-                    ctx.result("El filtro controla todas los path por debajo del grupo....");
-                });
             });
         });
     }
