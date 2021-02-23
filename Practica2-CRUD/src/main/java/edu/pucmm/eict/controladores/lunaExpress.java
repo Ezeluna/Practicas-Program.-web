@@ -11,6 +11,7 @@ public class lunaExpress {
     private ArrayList<User> misUsers;
     private ArrayList<Product> misProducts;
     private ArrayList<ventaProd> misVentas;
+    private static User loginUser;
 
     public lunaExpress() {
         this.misUsers = new ArrayList<>();
@@ -56,4 +57,75 @@ public class lunaExpress {
     public void setMisVentas(ArrayList<ventaProd> misVentas) {
         this.misVentas = misVentas;
     }
+
+    //Usuarios
+    public void insertUser(User user){
+        misUsers.add(user);
+    }
+
+    public boolean confirmLogin(String user) {
+        boolean login = false;
+        for (User auxUser : misUsers) {
+            if(auxUser.getUsuario().equals(user)){
+                loginUser = auxUser;
+                login = true;
+            }
+        }
+        return login;
+    }
+
+    public User retornarUser(String user) {
+        User miUser = null;
+        for (User aux : misUsers) {
+            if (aux.getUsuario().equalsIgnoreCase(user)) {
+                miUser = aux;
+            }
+        }
+        return miUser;
+    }
+
+    //Productos
+    public void insertProduct(Product product){
+        misProducts.add(product);
+    }
+
+    public Product retornarProdId(int id) {
+        Product miProduct = null;
+        for (Product product : misProducts) {
+            if (product.getId() == id) {
+                miProduct = product;
+            }
+        }
+        return miProduct;
+    }
+
+    public void eliminarProdId(int id) {
+        Product eliminarProduct = null;
+        for (Product product : misProducts) {
+            if (product.getId() == id) {
+                eliminarProduct = product;
+            }
+        }
+        misProducts.remove(eliminarProduct);
+    }
+
+    public void modificaProduct(Product product) {
+
+        for (Product miproduct : misProducts) {
+            if (product.getId() == miproduct.getId()) {
+                miproduct.setName(product.getName());
+                miproduct.setCant(product.getCant());
+                miproduct.setPrice(product.getPrice());
+            }
+        }
+    }
+
+    //Ventas
+    public void insertVenta(ventaProd venta){
+        misVentas.add(venta);
+    }
+
+
+
+
 }
