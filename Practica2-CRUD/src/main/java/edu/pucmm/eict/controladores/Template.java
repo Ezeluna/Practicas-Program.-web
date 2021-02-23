@@ -17,7 +17,6 @@ public class Template {
     }
 
     public void aplicarRutas(){
-        //app.get("/", ctx -> ctx.result("Hola Mundo en Javalin :-D"));
         app.get("/", ctx -> ctx.redirect("/login.html"));
       /*  app.routes(()->{
 
