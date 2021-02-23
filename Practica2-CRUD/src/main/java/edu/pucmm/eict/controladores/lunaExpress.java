@@ -3,7 +3,6 @@ package edu.pucmm.eict.controladores;
 import edu.pucmm.eict.logica.Product;
 import edu.pucmm.eict.logica.User;
 import edu.pucmm.eict.logica.ventaProd;
-import javassist.CtField;
 
 import java.util.ArrayList;
 
