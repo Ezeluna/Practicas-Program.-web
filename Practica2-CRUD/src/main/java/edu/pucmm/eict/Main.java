@@ -11,13 +11,13 @@ public class Main {
             config.addStaticFiles("/templates");
         }).start(7000);
 
+        Product pro = new Product(1,"Helmet",10,2200);
+        lunaExpress.getInstance().insertProduct(pro);
+        Product pro2 = new Product(2,"Termo",10,2200);
+        lunaExpress.getInstance().insertProduct(pro2);
+
+
         new Template(app).aplicarRutas();
-
-        /*Product pro = new Product(1,"Helmet",10,2200);
-        lunaExpress pro1 = new lunaExpress();
-        pro1.insertProduct(pro);
-
-        System.out.println(pro1.getMisProducts());*/
 
     }
 }

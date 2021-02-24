@@ -4,9 +4,10 @@ import edu.pucmm.eict.logica.Product;
 import io.javalin.Javalin;
 import io.javalin.plugin.rendering.JavalinRenderer;
 import io.javalin.plugin.rendering.template.JavalinThymeleaf;
+import static io.javalin.apibuilder.ApiBuilder.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Template {
@@ -21,17 +22,18 @@ public class Template {
         JavalinRenderer.register(JavalinThymeleaf.INSTANCE, ".html");
     }
 
-    lunaExpress luna = new lunaExpress();
+    lunaExpress luna = lunaExpress.getInstance();
 
     public void aplicarRutas(){
-        app.get("/", ctx -> ctx.redirect("/listProductos"));
+       app.get("/", ctx -> ctx.redirect("/listaProducts"));
 
         app.routes(() -> {
-            app.get("/listProductos", ctx ->{
-                List<Product> listProductos = luna.getMisProducts();
-                Map<String, Object> aux = new HashMap<>();
-                aux.put("list", listProductos);
-                ctx.render("/templates/products.html", aux);
+
+            get("/listaProducts", ctx ->{
+                ArrayList<Product> listaProducts = luna.getMisProducts();
+                Map<String, Object> modelo = new HashMap<>();
+                modelo.put("listaProducts", listaProducts);
+                ctx.render("/templates/products.html", modelo);
             });
 
         });
