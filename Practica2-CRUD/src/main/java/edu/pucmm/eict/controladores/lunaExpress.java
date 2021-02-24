@@ -89,10 +89,20 @@ public class lunaExpress {
         misProducts.add(product);
     }
 
-    public Product retornarProdId(int id) {
+    /*public Product retornarProdId(int id) {
         Product miProduct = null;
         for (Product product : misProducts) {
             if (product.getId() == id) {
+                miProduct = product;
+            }
+        }
+        return miProduct;
+    }*/
+
+    public Product retornarProdId(String pro) {
+        Product miProduct = null;
+        for (Product product : misProducts) {
+            if (product.getName().equalsIgnoreCase(pro)) {
                 miProduct = product;
             }
         }
